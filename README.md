@@ -6,10 +6,10 @@
 
 </div>
 
-<div align="justify">
-
 > [!WARNING]
 > Attention! This project is currently under rapid development so some of the content below might be not yet available or incorrect. If you are interested in the project and/or the development of the following, add the repo to your watch list and star it!
+
+<div align="justify">
 
 This document contains an overview of the project, a simple description of its parts and its development process, basic instructions on how to build your own Pulsar and how to use it, along with some renders and pictures.<br>
 I hope you will enjoy the process and you are always welcome to open an issue for feedbacks and questions.
