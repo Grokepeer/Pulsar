@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
 
 # Pulsar
 
@@ -6,7 +6,8 @@
 
 </div>
 
-<span style="color:red">Attention! This project is currently under rapid development so some of the content below might be not yet available or incorrect. If you are interested in the project and/or the development of the following, add the repo to your watch list and star it!</p>
+> [!WARNING]
+> Attention! This project is currently under rapid development so some of the content below might be not yet available or incorrect. If you are interested in the project and/or the development of the following, add the repo to your watch list and star it!
 
 This document contains an overview of the project, a simple description of its parts and its development process, basic instructions on how to build your own Pulsar and how to use it, along with some renders and pictures.<br>
 I hope you will enjoy the process and you are always welcome to open an issue for feedbacks and questions.
@@ -75,8 +76,8 @@ The PSU inside the Pulsar is a 4 layer, 60 x 60 mm PCB with 3, up to 3 A each, D
 ![PCB top view](./Images/dcdc-toppcb.png)
 
 <p float="left">
-    <img src="./Images/dcdc-topiso.png" width="49.8%">
-    <img src="./Images/dcdc-bottomiso.png" width="49.8%">
+    <img src="./Images/dcdc-topiso.png" width="49%">
+    <img src="./Images/dcdc-bottomiso.png" width="49%">
 </p>
 
 ### Case
