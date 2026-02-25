@@ -6,7 +6,7 @@
 
 </div>
 
-<div style="text-align: justify">
+<div align="justify">
 
 > [!WARNING]
 > Attention! This project is currently under rapid development so some of the content below might be not yet available or incorrect. If you are interested in the project and/or the development of the following, add the repo to your watch list and star it!
