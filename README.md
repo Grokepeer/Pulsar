@@ -6,6 +6,8 @@
 
 </div>
 
+<div style="text-align: justify">
+
 > [!WARNING]
 > Attention! This project is currently under rapid development so some of the content below might be not yet available or incorrect. If you are interested in the project and/or the development of the following, add the repo to your watch list and star it!
 
@@ -73,12 +75,13 @@ Since this system is also battery powered, it needs to be efficient, so the enti
 
 The PSU inside the Pulsar is a 4 layer, 60 x 60 mm PCB with 3, up to 3 A each, DC to DC rails and a ideal diode controller that can hot-swap between two power sources at voltages ranging from 8 V to 16 V. Each rail's switching controller can be chosen between a 3 A variant and a 2 A one, depending on projected consumption. On my design I decided to go with a 3 A, 5.0 V rail and a 2 A, 3.3 V. Based on simulations the 3.3 V rail can reach 94.8% efficiency at 50% load.
 
-![PCB top view](./Images/dcdc-toppcb.png)
-
+<div align="center">
 <p float="left">
+    <img src="./Images/dcdc-toppcb.png" width="98%">
     <img src="./Images/dcdc-topiso.png" width="49%">
     <img src="./Images/dcdc-bottomiso.png" width="49%">
 </p>
+</div>
 
 ### Case
 
@@ -98,3 +101,5 @@ Particular PCB requirements and generic informations are provided here:
 ## Operation
 
 In the midst of this chapter you will find some suggestions regarding the ways of the firmware.
+
+</div>
