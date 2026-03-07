@@ -77,7 +77,7 @@ The PSU inside the Pulsar is a 4 layer, 60 x 60 mm PCB with 3, up to 3 A each, D
 
 <div align="center">
 <p float="left">
-    <img src="./Images/dcdc-toppcb.png" width="98%">
+    <img src="./Images/dcdc-toppcb.png" width="98.3%">
     <img src="./Images/dcdc-topiso.png" width="49%">
     <img src="./Images/dcdc-bottomiso.png" width="49%">
 </p>
