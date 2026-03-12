@@ -34,9 +34,9 @@ The system is open-source and open-hardware so that anybody that is interested c
 
 - [Repository Structure](#repository-structure)
 - [Technical Overview](#technical-overview)
-    - [Radio Modules](#radio-modules)
     - [Central Processor Unit](#central-logic-unit)
     - [Power Supply Unit](#power-supply-unit)
+    - [Radio Modules](#radio-modules)
     - [Case](#case)
 - [Production](#production)
     - [PCB Sourcing](#pcb-sourcing)
@@ -60,20 +60,13 @@ Over this chapter I'm going to talk about each of the parts that make up the sys
 
 To give a general overview of the project, I'll give a quick list of its parts. The Pulsar is powered by a battery (3S LiPo/LiIon), uses a DC/DC PSU to power the main logic board (CLU), a multitude of RF modules, an optional 4G/5G module, the router SBC and a GPS module. The SBC and 4G/5G module can be turned on/off from the uC via relays. There's also a rotary selector and a small display that the user can interface with. A 3D printed case encloses everything.
 
-### Radio Modules
-
-The radio modules are SemTech SX1262 and SX1281 based modules that use LoRa modulation over a range of frequency as low as 100 MHz and as high as 2.4 GHz. LoRa is a popular, efficient and well adopted modulation system, so choosing it, rather then another, allows me to have access to a great choice of transceiver chips and plenty of documentation.
-
-The modules are separated from the main board and power supply so they can be swapped easily and freely depending on preference. This allows me to plan the development of more powerful radio modules down the line.
-
-The radio modules I'm going to use at first are Ebyte LoRa modules. These modules integrate an RF PA with an SX1262 or SX1281 chip and allow direct communication to the SemTech chip. So in case I swap the module for a different one, from another brand or a custom build one, I can always use the same interface, as long as I keep using the SemTech chip. This also means that I can use the SemTech provided programming documentation, indepedently from the module manufacturer, should it change eventually.
 
 ### Central Logic Unit
 
 The main board, or CLU, connects together all modules and user interfaces. It does not provide power, that is left to the [PSU](#power-supply-unit).
 
-The board has 4 MODx connectors that offer multiple GPIOs and an SPI interface, to connect to the RF modules (in particular, to connect directly to the SemTech SX1262 and SX1281 chips), 3 UARTs that can be used to connect to external computers and controllers, a single I2C that is used to connect to the internal screen and a GPIO that connects to the rotary selector and the SBC's relays.<br>
-On the baord you will also find an SD card slot that allows the system to save log files during operation, a coin battery that allows the internal RTC to remain active without the main battery, a small DIP switch that is used for configuration of the board, the JDY-23 bluetooth module, and the STM32H733VGT6 at the heart of the system.
+The board has 4 MODx connectors that offer multiple GPIOs and an SPI interface, to connect to the RF modules (in particular, to connect directly to the SemTech SX1262 and SX1281 chips), 3 UARTs that can be used to connect to external computers and controllers, a single I2C that is used to connect to a small screen and a GPIO header that connects to user interfaces and the SBC's relays.<br>
+On the baord you will also find an SD card slot that allows the system to save log files during operation, a coin battery that allows the internal RTC to remain active without the main battery, a small DIP switch that is used for configuration of the board, the JDY-23 bluetooth module, and the STM32H733VGT6 at the heart of the system with its debug interface connector (SWD).
 
 The CLU inside the Pulsar is a 4 layer, 60 x 75 mm PCB.
 
@@ -100,6 +93,23 @@ The PSU inside the Pulsar is a 4 layer, 60 x 60 mm PCB with 3, up to 3 A each, D
     <img src="./Images/psu-bottompcb.png" width="49%">
     <img src="./Images/psu-topiso.png" width="49%">
     <img src="./Images/psu-bottomiso.png" width="49%">
+</p>
+</div>
+
+### Radio Modules
+
+Since the modules are connected via connectors you can integrate whatever radio module you want, as long as it can interface with the H733 using SPI.
+
+The radio modules I decided to use are SemTech SX1262 and SX1281 based, and use LoRa modulation over a range of frequency as low as 100 MHz and as high as 2.4 GHz. LoRa is a popular, efficient and well adopted modulation system, so choosing it, rather then another, allows me to have access to a great choice of transceiver chips and plenty of documentation.
+
+The specific modules I chose are from Ebyte: E22-xxxMxxS and E28-2G4MxxSX modules variaties. I then designed a simple carrier board that allows to connect both types of modules to the 10 pin MODx data connector and the power connector. It's noteworthy that these LoRa modules, unlike others, even from the same Ebyte, expose direct communication to the SemTech chip, so the SPI interface is exactly the same I would have using different SX1262/SX1281 modules (even completely custom ones).
+
+<div align="center">
+<p float="left">
+    <img src="./Images/e22e28mod-toppcb.png" width="49%">
+    <img src="./Images/e22e28mod-bottompcb.png" width="49%">
+    <img src="./Images/e22e28mod-topiso.png" width="49%">
+    <img src="./Images/e22e28mod-bottomiso.png" width="49%">
 </p>
 </div>
 
