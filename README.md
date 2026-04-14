@@ -42,6 +42,7 @@ The system is open-source and open-hardware so that anybody that is interested c
     - [Router Module](#router-module)
     - [Case](#case)
 - [Production](#production)
+    - [Tools](#tools)
     - [PCB Sourcing](#pcb-sourcing)
     - [PCB Assembly](#pcb-assembly)
     - [3D Printing](#3d-printing)
@@ -91,7 +92,7 @@ The CLU inside the Pulsar is a simple 4 layer, 60 x 75 mm PCB, that can be hand-
 
 ### Power Supply Unit
 
-To power the entire system with high-power RF modules, microcontrollers, an SBC and a 4G/5G modem, a proper DC/DC power supply is necessary. The RF modules use both 3.3 V and 5.0 V, the microcontroller uses 3.3V, the SBC uses 5.0 V and the Quectel module uses 3.8 V, so it was necessary to design a 3 rail DC/DC PSU. To allow the addition of a more powerful RF PA further down the line the 3.8 V line (0V0 on the board) can be reconfigured to a range of voltages using the feedback voltage divider in DCDC switching IC (check the board schematics for more details).
+To power the entire system with high-power RF modules, microcontrollers, an SBC and a 4G/5G modem, a proper DC/DC power supply is necessary. The RF modules use both 3.3 V and 5.0 V, the microcontroller uses 3.3V, the SBC uses 5.0 V and the Quectel module uses 3.8 V, so it was necessary to design a 3 rail DC/DC PSU. To allow the addition of a more powerful RF PA further down the line the 3.8 V line can be reconfigured to a range of voltages using the feedback voltage divider in DCDC switching IC (check the board schematics for more details).
 
 Each rail's switching controller can be chosen between a 3 A variant and a 2 A one, depending on projected consumption. On my design I decided to go with two 3 A rails (3.8 V and 5.0 V) and a 2 A rail (3.3 V). Based on simulations the 3.3 V rail, powered at 15 V can reach 94.8% efficiency at 2A load. An ideal diode controller that can hot-swap between two power sources at voltages ranging from 8 V to 16 V is also integrated in the design.
 
@@ -133,7 +134,7 @@ Because some CAT12+ LTE-A modules and 5G modules can saturate a single USB2.0 (4
 
 Since some advanced modules consume a lot of power and produce plenty of heat, the board requires direct power from the DCDC (cannot be powered from USB at all) and presents a big heat-absorbing surface on the top side of the module, it also has copper pours on all layers and via arrays to help spread the heat from the module.
 
-The NGFF to USB3.0 adapter is a 4 layer, 60 x 75 mm PCB, that should be produced with the JLC04161H-3312 stackup. It can be hand-soldered but I would suggest to leave the assembly of the NGFF and USB connector to a P&P machine.
+The NGFF to USB3.0 adapter is a 4 layer, 60 x 75 mm PCB, that should be produced with the JLC04161H-3313 stackup. It can be hand-soldered but I would suggest to leave the assembly of the NGFF and USB connector to a P&P machine.
 
 <div align="center">
 <p float="left">
@@ -146,15 +147,34 @@ The NGFF to USB3.0 adapter is a 4 layer, 60 x 75 mm PCB, that should be produced
 
 ### Case
 
-WIP
+Well, well, well... it's under development
 
 ## Production
 
 Over the course of this chapter I will go into some detail about how to procure yourself everything you need to create your own Pulsar, how to assemble it and program it.
 
+### Tools
+
+You are going to need a couple different tools for the job. Starting from a soldering iron.
+
 ### PCB Sourcing
 
 In the [PCB Files](./PCB%20Files/) folder you will find the gerbers .zip files of all the PCBs that are necessary to build a functioning Pulsar. These files contain the PCB production informations such as copper pours polygons and drill holes. You will need to download all the gerber files and send them to your preferred PCB manufacturer (such as JLCPCB).
+
+Most PCB manufacturers will have minimum PCB quantities (usually 5 pz) so you will have spares. Regardless, to build our Pulsar we will need one PSU board, one CLU, 2 E22E28MOD and a single NGFFUSB board.
+
+I strongly suggest, when ordering the PCBs, to also order PCB assembly for two components on the NGFFUSB board: the NGFF connector and the USB micro-B connector. In the [PCB Files](./PCB%20Files/) folder, under NGFFUSB, latest revision, you will find BOM and placement xlsx files ready for JLCPCB PCBA assembly service (check final placement, it usually requires adjustments before placing the order).
+
+</div>
+
+> [!IMPORTANT]
+> Remember to set the NGFFUSB board stackup to guarantee 90 ohm impedance matched super-speed USB lines. This is the JLC04161H-3313 if ordering from JLCPCB. If ordering from somebody else you will need to do your math, the USB SS lines are 0.1554 mm wide and spaced 0.2032 mm apart.
+
+<div align="justify">
+
+### PCB Assembly
+
+After you've received all the PCBs and ordered all the components...
 
 ## Operation
 
