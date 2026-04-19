@@ -6,11 +6,15 @@
 
 </div>
 
+> [!IMPORTANT]
+> Hi! This project is completely open-source but it's expensive to develope it so I ask to anybody interested, to consider supporting the project by subscribing to the Pulsar's newsletter [here](https://sheartail.net) so you can receive updates about the kickstarter campaign I'm planning. There are gonna be awesome rewards for backers with handcrafted Pulsars and much more!
+Thank you very much.
+
 > [!WARNING]
-> Attention! This project is currently under rapid development so some of the content below might not be available yet or incorrect. If you are interested in the project and/or the development of the following, add the repo to your watch list and star it!
+> Attention! This project is currently under rapid development so some of the content below might not be available yet or incorrect.
 
 > [!CAUTION]
-> Always check with local authority about RF frequency regulations active in your area.
+> Always check with local authority about RF bands regulations in your area.
 
 <div align="justify">
 
@@ -53,7 +57,7 @@ The system is open-source and open-hardware so that anybody that is interested c
 </div>
 
 > [!IMPORTANT]
-> To keep this guide simple and understandable, in the following chapters I will refer to a particular configuration of the modules and parts, although the user knows that the system is highly customizable and can be changed from start to finish. The configuration that I will refer to is as follows: 3S battery, DCDC with 5.0V@3A, 3.3V@2A and 3.8V@3A (for the LTE module), a Radxa Zero 3W SBC or similar WiFi and USB3 capable SBC, a Quectel LTE EM05 module, a generic UART GPS 5V module, a single SX1281 2.4 GHz module powered from the 3.3 V and a single SX1262 868 MHz module powered from the 5.0 V.
+> To keep this guide simple and understandable, in the following chapters I will refer to a particular configuration of the modules and parts, although the user knows that the system is highly customizable and can be changed from start to finish. The configuration that I will refer to is as follows: 3S battery, DCDC with 5.0V@3A, 3.3V@2A and 3.8V@3A (for the LTE module), a Raspberry Pi 3B SBC or similar WiFi and USB3 capable SBC, a Quectel LTE EM05 module, a generic UART GNSS 5V module, a single SX1281 2.4 GHz module powered from the 3.3 V and a single SX1262 868 MHz module powered from the 5.0 V.
 
 <div align="justify">
 
@@ -155,7 +159,14 @@ Over the course of this chapter I will go into some detail about how to procure 
 
 ### Tools
 
-You are going to need a couple different tools for the job. Starting from a soldering iron.
+You are going to need a couple different tools for the job.
+- A soldering iron.
+- I suggest you also acquire some experience with SMD soldering before starting to work on the following PCBs.
+- Small tweezers to help you place SMD components on the boards.
+- A clean surface where to solder.
+- Solder (preferably lead-free).
+- Flux (helpful for some packages like the LQFP100 H733).
+- Various sizes of screwdrivers (hex and phillips in the M2-M3 range).
 
 ### PCB Sourcing
 
@@ -175,6 +186,17 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 ### PCB Assembly
 
 After you've received all the PCBs and ordered all the components...
+
+### Firmware Flashing
+
+</div>
+
+> [!TIP]
+> If you plan to do any work on the software of any kind, I strongly suggest to get yourself a logic analyzer, otherwise you might have a very bad time figuring what exactly is not working.
+
+<div align="justify">
+
+[...]
 
 ## Operation
 
