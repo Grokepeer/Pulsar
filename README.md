@@ -7,7 +7,7 @@
 </div>
 
 > [!IMPORTANT]
-> Hi! This project is completely open-source but it's expensive to develope it so I ask to anybody interested, to consider supporting the project by subscribing to the Pulsar's newsletter [here](https://sheartail.net) so you can receive updates about the kickstarter campaign I'm planning. There are gonna be awesome rewards for backers with handcrafted Pulsars and much more!
+> Hi! As you can see this project is completely open-source, but it's expensive to develope it, so I ask to anybody interested to consider supporting the project by subscribing to the Pulsar's newsletter [here](https://sheartail.net), this way you can receive updates about the kickstarter campaign I'm planning. There are gonna be awesome rewards for backers with handcrafted Pulsars and much more!
 Thank you very much.
 
 > [!WARNING]
@@ -192,7 +192,7 @@ After you've received all the PCBs and ordered all the components...
 </div>
 
 > [!TIP]
-> If you plan to do any work on the software of any kind, I strongly suggest to get yourself a logic analyzer, otherwise you might have a very bad time figuring what exactly is not working.
+> If you plan to do any work on the software, of any kind, I strongly suggest to get yourself a logic analyzer, otherwise you might have a very bad time figuring what exactly is not working.
 
 <div align="justify">
 
