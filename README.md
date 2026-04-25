@@ -2,6 +2,11 @@
 
 # Pulsar
 
+[![Hardware: CERN OHL S](https://img.shields.io/badge/Hardware-CERN--OHL--S-blue.svg)](https://gitlab.com/ohwr/project/cernohl/-/wikis/uploads/819d71bea3458f71fba6cf4fb0f2de6b/cern_ohl_s_v2.txt)
+[![Software: AGLP v3](https://img.shields.io/badge/Software-GNU--AGPL--V3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+![Status: Alpha](https://img.shields.io/badge/Status-Alpha-orange.svg)
+![PRs: Welcome](https://img.shields.io/badge/PRs-Welcome-green.svg)
+
 <img src="./Images/pulsar-logo.png" width="300px">
 
 </div>
@@ -28,13 +33,19 @@ I hope you will enjoy the process and you are always welcome to open an issue fo
 
 ## Synopsis
 
-The Pulsar is a highly portable, off-grid (and optionally on-grid), radio communication system. The goal is to create a small (hand-held), battery powered, system that can utilize multiple frequencies and high-power RF power amplifiers to allow long-range, decentralized, reliable and secure, communication between two or more nodes.
+The Pulsar is a highly portable, off-grid (and optionally on-grid), modular radio communication system. The goal is to create a small (hand-held), battery powered, system that can utilize multiple radio frequencies and high-power RF power amplifiers to allow long-range, decentralized, reliable and secure, communication between two or more nodes.
 
-The main computer can connect to other devices (like smartphones, computers and even CSRF controllers) via bluetooth LE and serial wired ports. The conneted devices can send, via the serial line with the main computer, data that they need to send over the radio link. The main computer then uses the RF modules to communicate with another Pulsar (or compatible device), and send the data (encrypted). Once it's on the other Pulsar it can be sent via serial connection to the specific destination device that is connected to it.
+The modular design allows swapping of the RF modules independently of the main computer (CLU), keeping one standard interface for unlimited customizable setups.
 
 Through the use of an optional 4G/5G module, the system can also communicate via traditional networks. Due to the need of a SIM to authenticate the user on a commercial network, this module, if installed, can be airgapped at any moment by the user. To operate the 4G/5G module an SBC running OpenWRT is needed. This way the main computer will have access to the 4G/5G lines through serial connetion to the SBC and you will have a fully featured router and 4G/5G modem that you can directly connect to via a dedicated wifi AP.
 
+**Working Principle:** The main computer can connect to other devices (like smartphones, computers and even CSRF controllers) via bluetooth LE and serial wired ports. The conneted devices can send, via the serial line with the main computer, data that they need to send over the radio link. The main computer then uses the RF modules to communicate with another Pulsar (or compatible device), and send the data (encrypted). Once it's on the other Pulsar it can be sent via serial connection to the specific destination device that is connected to it.
+
+#### Licensing
+
 The system is open-source and open-hardware so that anybody that is interested can build one on its own and even modify the design or give his/her feedback.
+
+The hardware is released under the CERN-OHL-S license (In particular, everything under [3D Files](./3D%20Files/) and [PCB Files](./PCB%20Files/)), while all software is released under GNU-Affero-GPL-V3 license.
 
 ## Table of contents
 
@@ -50,7 +61,7 @@ The system is open-source and open-hardware so that anybody that is interested c
     - [PCB Sourcing](#pcb-sourcing)
     - [PCB Assembly](#pcb-assembly)
     - [3D Printing](#3d-printing)
-    - [Assembly and Firmware](#assembly-and-firmware)
+    - [Firmware Flashing](#firmware-flashing)
 - [Operation](#operation)
     - [To Arrive Soon]()
 
@@ -65,7 +76,7 @@ The system is open-source and open-hardware so that anybody that is interested c
 ## Repository Structure
 
 The repository is divided into 4 sections.
-- The base folder along with the [images](./Images/) folder contains the README, LICENSE and some useful informations to get started. All of the informations contained in these folders are accessible in an organized matter in this README.
+- The base folder along with the [Images](./Images/) folder contains the README, LICENSE and some useful informations to get started. All of the informations contained in these folders are accessible in an organized matter in this README.
 - The [3D Files](./3D%20Files/) folder contains 3D files (mainly STEP) that you will need to print to build your Pulsar (read more about this [here](#3d-printing)). It also contains some 3D models of the PCBs so that you can use them if you wish to integrate the PCBs into your own design.
 - The [PCB Files](./PCB%20Files/) folder contains gerber files to send to your preferred PCB manufacturer, BOM files so that you can order all necessary components and the PCB's schematics.
 - The [Firmware](./Firmware/) folder contains the STM32CubeMX project with all the STM32H733VG code and configuration files. A pre-compiled binary file will be provided on release. It's not recommended to build the code yourself, nor to modify it, if you don't know what you are doing.
@@ -185,7 +196,11 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 
 ### PCB Assembly
 
-After you've received all the PCBs and ordered all the components...
+[...]
+
+### 3D Printing
+
+[...]
 
 ### Firmware Flashing
 
