@@ -15,6 +15,9 @@
 > Hi! As you can see this project is completely open-source, but it's expensive to develope it, so I ask to anybody interested to consider supporting the project by subscribing to the Pulsar's newsletter [here](https://sheartail.net), this way you can receive updates about the kickstarter campaign I'm planning. There are gonna be awesome rewards for backers with handcrafted Pulsars and much more!
 Thank you very much.
 
+> [!NOTE]
+> Checkout this [blog](https://sheartail.net/blog) for regular updates regarding the prototype assembly and testing and the software development.
+
 > [!WARNING]
 > Attention! This project is currently under rapid development so some of the content below might not be available yet or incorrect.
 
