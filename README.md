@@ -58,6 +58,7 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
     - [Power Supply Unit](#power-supply-unit)
     - [Radio Modules](#radio-modules)
     - [Router Module](#router-module)
+    - [Future Modules](#future-modules)
     - [Case](#case)
 - [Production](#production)
     - [Tools](#tools)
@@ -75,14 +76,12 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
 
 <div align="justify">
 
-
 ## Repository Structure
 
-The repository is divided into 4 sections.
+The repository is divided into 3 sections.
 - The base folder along with the [Images](./Images/) folder contains the README, LICENSE and some useful informations to get started. All of the informations contained in these folders are accessible in an organized matter in this README.
 - The [3D Files](./3D%20Files/) folder contains 3D files (mainly STEP) that you will need to print to build your Pulsar (read more about this [here](#3d-printing)). It also contains some 3D models of the PCBs so that you can use them if you wish to integrate the PCBs into your own design.
 - The [PCB Files](./PCB%20Files/) folder contains gerber files to send to your preferred PCB manufacturer, BOM files so that you can order all necessary components and the PCB's schematics.
-- The [Firmware](./Firmware/) folder contains the STM32CubeMX project with all the STM32H733VG code and configuration files. A pre-compiled binary file will be provided on release. It's not recommended to build the code yourself, nor to modify it, if you don't know what you are doing.
 
 ## Technical Overview
 
@@ -162,6 +161,14 @@ The NGFF to USB3.0 adapter is a 4 layer, 60 x 75 mm PCB, that should be produced
     <img src="./Images/ngffusb-bottomiso.png" width="49%">
 </p>
 </div>
+
+### Future Modules
+
+The possiblities are endless and my ideas are usually way too ambitious but some of the modules I'd like to develop in the future are:
+
+- Custom RF power amplifiers for more powerful radio modules designed for UHF and VHF.
+- Custom HF radio modules that can be used for over-the-horizon radio communication.
+- Perhaps a simple non-transmitting SDR module.
 
 ### Case
 
