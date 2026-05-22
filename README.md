@@ -44,7 +44,7 @@ Through the use of an optional 4G/5G module, the system can also communicate via
 
 **Working Principle:** The main computer can connect to other devices (like smartphones, computers and even CSRF controllers) via bluetooth LE and serial wired ports. The conneted devices can send, via the serial line with the main computer, data that they need to send over the radio link. The main computer then uses the RF modules to communicate with another Pulsar (or compatible device), and send the data (encrypted). Once it's on the other Pulsar it can be sent via serial connection to the specific destination device that is connected to it.
 
-#### Licensing
+### Licensing
 
 The system is open-source and open-hardware so that anybody that is interested can build one on its own and even modify the design or give his/her feedback.
 
@@ -64,8 +64,8 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
     - [Tools](#tools)
     - [PCB Sourcing](#pcb-sourcing)
     - [PCB Assembly](#pcb-assembly)
-    - [3D Printing](#3d-printing)
     - [Firmware Flashing](#firmware-flashing)
+    - [3D Printing](#3d-printing)
 - [Operation](#operation)
     - [To Arrive Soon]()
 
@@ -87,13 +87,13 @@ The repository is divided into 3 sections.
 
 Over this chapter I'm going to talk about each of the parts that make up the system, from the electronics to the 3D printed case.
 
-To give a general overview of the project, I'll give a quick list of its parts. The Pulsar is powered by a battery (3S LiPo/LiIon), uses a DC/DC PSU to power the main logic board (CLU), the two LoRa RF modules, the Quectel module, the router SBC and the GPS module. The SBC and 4G/5G module can be turned on/off from the uC via relays that cutoff the power to the modules. There's also a rotary selector and a small display that the user can interface with. A 3D printed case encloses everything.
+To give a general overview of the project, I'll give a quick list of its parts. The Pulsar is powered by a battery (3S LiPo/LiIon), uses a DC/DC PSU to power the main logic board (CLU), the two, or more, LoRa RF modules, the Quectel modem, the router SBC and the GPS module. The SBC and 4G/5G module can be turned on/off from the uC via relays that cutoff the power to the modules. There's also a rotary selector and a small display that the user can interface with. A 3D printed case encloses everything.
 
 ### Central Logic Unit
 
 The main board, or CLU, connects together all modules and user interfaces. It does not provide power, that is left to the [PSU](#power-supply-unit).
 
-The board has 4 MODx connectors that offer multiple GPIOs and an SPI interface, to connect to the RF modules (in particular, to connect directly to the SemTech SX1262 and SX1281 chips), 3 UARTs, one used to connect to the SBC, one for the GPS module and the third is left to allow external computers or controllers to connect, a single I2C that is used to connect to a small screen and a GPIO header that connects to user interfaces and the SBC's relays.<br>
+The board has 4 MODx connectors that offer multiple GPIOs and an SPI interface to connect to the RF modules (in particular, to connect directly to the SemTech SX1262 and SX1281 chips), 3 UARTs, one used to connect to the SBC, one for the GPS module and the third is left to allow external computers or controllers to connect, a single I2C that is used to connect to a small screen and a GPIO header that connects to user interfaces and the SBC's relays.<br>
 On the baord you will also find an SD card slot that allows the system to save log files during operation, a coin battery that allows the internal RTC to remain active without the main battery, a small DIP switch that is used for configuration of the board, the JDY-23 bluetooth module, and the STM32H733VGT6 at the heart of the system with its debug interface connector (SWD).
 
 The CLU inside the Pulsar is a simple 4 layer, 60 x 75 mm PCB, that can be hand-soldered.
@@ -126,7 +126,7 @@ The PSU inside the Pulsar is a 4 layer, 60 x 60 mm PCB, that can be hand-soldere
 
 ### Radio Modules
 
-Since the modules are connected via connectors you can integrate whatever radio module you want, as long as it can interface with the H733 using SPI.
+Since the modules are connected via the standard MODx connectors you can integrate whatever radio module you want, as long as it can interface with the H733 using SPI.
 
 The radio modules I decided to use are SemTech SX1262 and SX1281 based, and use LoRa modulation over a range of frequency as low as 100 MHz and as high as 2.4 GHz. LoRa is a popular, efficient and well adopted modulation system, so choosing it, rather then another, allows me to have access to a great choice of transceiver chips and plenty of documentation.
 
@@ -143,15 +143,15 @@ The specific modules I chose are from Ebyte: E22-xxxMxxS and E28-2G4MxxSX module
 
 ### Router Module
 
-The "on-grid" module is composed of an SBC that operates as a normal router and a LTE module that is connected to the SBC via USB (using a NGFF M.2 to USB adapter). Any device that connects to the router has access to the on-grid line and can therefore navigate the web, etc.. Most 4G/5G modems integrate a GNSS chip and antenna that is disabled by default on this design because of privacy concerns.
+The "on-grid" module is composed of an SBC that operates as a normal router and an LTE module that is connected to the SBC via USB (using a NGFF M.2 to USB adapter). Any device that connects to the router can gain access to the on-grid line and can therefore navigate the web, etc.. Most 4G/5G modems integrate a GNSS chip and antenna that is disabled by default on this design because of privacy concerns.
 
-The SBC that I chose is a small Radxa Zero 3W that has integrated WiFi6 and a single USB3.0. To connect a NGFF M.2 LTE module I then designed an adapter to USB. The adapter is a separate "entity" from the SBC so that based on availability and design needs, the SBC can be changed, while keeping the USB 4G/5G module intact. For this reason I won't go into much detail about the SBC.
+The SBC that I chose is the Raspberry Pi 3 Model B+ that I had laying around, but you can use more powerful, more up to date models with similar form factor. To connect a NGFF M.2 LTE module I then designed an adapter to USB. The adapter is a separate "entity" from the SBC so that based on availability and design needs, the SBC can be changed, while keeping the USB 4G/5G module intact. For this reason I won't go into much detail about the SBC.
 
 Because some CAT12+ LTE-A modules and 5G modules can saturate a single USB2.0 (480 Mbps) serial line, the board is designed with USB3.0 support (5.0 Gbps), requiring the design to incorporate impedance and phase matched lines.
 
 Since some advanced modules consume a lot of power and produce plenty of heat, the board requires direct power from the DCDC (cannot be powered from USB at all) and presents a big heat-absorbing surface on the top side of the module, it also has copper pours on all layers and via arrays to help spread the heat from the module.
 
-The NGFF to USB3.0 adapter is a 4 layer, 60 x 75 mm PCB, that should be produced with the JLC04161H-3313 stackup. It can be hand-soldered but I would suggest to leave the assembly of the NGFF and USB connector to a P&P machine.
+The NGFF to USB3.0 adapter is a 4 layer, 60 x 75 mm PCB, that should be produced with a calculated stackup (more on this in the [PCB sourcing](#pcb-sourcing) section). It can be hand-soldered but I would suggest to leave the assembly of the NGFF and USB connector to a P&P machine.
 
 <div align="center">
 <p float="left">
@@ -178,24 +178,32 @@ Well, well, well... it's under development
 
 Over the course of this chapter I will go into some detail about how to procure yourself everything you need to create your own Pulsar, how to assemble it and program it.
 
+</div>
+
+> [!Note]
+> The process of ordering the PCBs, ordering all the components (80+ individual components) and soldering everything together is truly a non-trivial task. I'm going to presume that if you are trying to build the hardware from skratch you know what you are doing, this means you have already ordered PCBs in the past, you know what a stackup is, you know what impedance is, etc.. While trying to build this hardware there is the very real chance of breaking something.
+
+<div align="justify">
+
 ### Tools
 
-You are going to need a couple different tools for the job.
+You are going to need a couple different tools for the job:
 - A soldering iron.
-- I suggest you also acquire some experience with SMD soldering before starting to work on the following PCBs.
+- SMD soldering experience.
 - Small tweezers to help you place SMD components on the boards.
 - A clean surface where to solder.
 - Solder (preferably lead-free).
 - Flux (helpful for some packages like the LQFP100 H733).
 - Various sizes of screwdrivers (hex and phillips in the M2-M3 range).
+- A programming/debugging probe (ex. STLink)
 
 ### PCB Sourcing
 
-In the [PCB Files](./PCB%20Files/) folder you will find the gerbers .zip files of all the PCBs that are necessary to build a functioning Pulsar. These files contain the PCB production informations such as copper pours polygons and drill holes. You will need to download all the gerber files and send them to your preferred PCB manufacturer (such as JLCPCB).
+In the [PCB Files](./PCB%20Files/) folder you will find the gerbers .zip files of all the PCBs that are necessary to build a functioning Pulsar. These files contain the PCB production informations such as copper pours polygons and drill holes. You will need to download all the gerber files and send them to your preferred PCB manufacturer (such as PCBWay).
 
 Most PCB manufacturers will have minimum PCB quantities (usually 5 pz) so you will have spares. Regardless, to build our Pulsar we will need one PSU board, one CLU, 2 E22E28MOD and a single NGFFUSB board.
 
-I strongly suggest, when ordering the PCBs, to also order PCB assembly for two components on the NGFFUSB board: the NGFF connector and the USB micro-B connector. In the [PCB Files](./PCB%20Files/) folder, under NGFFUSB, latest revision, you will find BOM and placement xlsx files ready for JLCPCB PCBA assembly service (check final placement, it usually requires adjustments before placing the order).
+I strongly suggest, when ordering the PCBs, to also order PCB assembly for two components on the NGFFUSB board: the NGFF connector and the USB micro-B connector. In the [PCB Files](./PCB%20Files/) folder, under NGFFUSB, latest revision, you will find BOM and placement xlsx files ready for PCBA services.
 
 </div>
 
@@ -208,10 +216,6 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 
 [...]
 
-### 3D Printing
-
-[...]
-
 ### Firmware Flashing
 
 </div>
@@ -220,6 +224,12 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 > If you plan to do any work on the software, of any kind, I strongly suggest to get yourself a logic analyzer, otherwise you might have a very bad time figuring what exactly is not working.
 
 <div align="justify">
+
+This part is fairly easy. Once you have soldered everything on the CLU and you have a 3V3 power supply (PSU or external) you can program it with the PulsarOS firmware.
+
+Connect your debuggin probe to the 10 pin IDC connector on the CLU, power up the CLU, grab the latest release of [PulsarOS](https://github.com/grokepeer/PulsarOS) (look for the prebuilt .hex/.axf files in the GitHub release section of the PulsarOS repository). Download the firmware to you programming probe interface (STM32CubeProg if using STLink) and flash. Done.
+
+### 3D Printing
 
 [...]
 
