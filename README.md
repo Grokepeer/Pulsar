@@ -78,7 +78,7 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
 
 ## Sponsors
 
-<img src="./Images/pcbway.png" height="40px" style="float: left; margin-right: 15px; margin-bottom: 5px;">
+<img src="./Images/pcbway.png" height="45px" align="left">
 
 A special thank you to PCBWay for reaching out and offering to help with the development of the project. Without their help I would not be working on a new PCB iteration with improved design and better capability. For this project I am going to rely on their PCB production and assembly services, but they offer many other great services like PCB design, CNC machining and 3D printing. If you are working on a DIY project of any sort I suggest you check them out [here](https://pcbway.com/).
 
