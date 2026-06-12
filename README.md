@@ -60,6 +60,10 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
     - [Router Module](#router-module)
     - [Future Modules](#future-modules)
     - [Case](#case)
+- [Firmware and Software](#firmware-and-software)
+    - [Basic Structure](#basic-structure)
+    - [Module Interface](#module-interface)
+    - [Debugging Tools](#debugging-tools)
 - [Production](#production)
     - [Tools](#tools)
     - [PCB Sourcing](#pcb-sourcing)
@@ -176,11 +180,56 @@ The possiblities are endless and my ideas are usually way too ambitious but some
 - Custom HF radio modules that can be used for over-the-horizon radio communication.
 - Perhaps a simple non-transmitting SDR module.
 
-Still, the best of the Pulsar is that you will be able to design your own hardware and write your module interface package to integrate in the firmware!
+Still, the best part of the Pulsar is that you will be able to design your own hardware and write your own module interface package to integrate in the firmware!
 
 ### Case
 
 Well, well, well... it's under development
+
+## Firmware and Software
+
+The Pulsar hardware operates around one central microcontroller. This microcontroller runs the PulsarOS firmware. To connect to the Pulsar via BLE using a smartphone, the PulsarLoom app can be used. Other implementations of software interfaces (through BLE or serial) are not available yet, but can be purpose built with relative ease by anyone.
+
+All the code for all the software and firmware is open-source and available in two dedicated repositories: [PulsarOS](https://github.com/grokepeer/PulsarOS) and [PulsarLoom](https://github.com/grokepeer/PulsarLoom). In the PulsarOS repository you'll also find other code necessary for the peripherals present on the Pulsar, such as the Nordic BLE chip.
+
+The following sections are going to focus on the PulsarOS firmware for the STM32H733VG microcontroller.
+
+### Basic Structure
+
+The PulsarOS firmwares is built on top of FreeRTOS. This allows tasks to be dynamically scheduled when needed, reduces CPU load and helps with keeping everything as organized as possible during runtime.
+
+The main task is represented by the radioTask, this task loads settings, initializes the radio modules and orchestrates communications with them. When this task doesn't run a multitude of other tasks can operate without distrupting the radio, such as checking the battery voltage or updating the on-board display.
+
+### Module Interface
+
+In order to allow any custom module to connect to the system, the PulsarOS is designed with external "translation layers" that transform standard instructions from the PulsarOS to specific ones meant for the particular module that they refer to. This functionality is achieved using a standard interface between the "translation layer" and the PulsarOS core, that exposes to both a set of functions that both parts can call in order to command the other. To give an example, if the core needs to send a message via the module number 1, it's going to load the module 1 interface (our "translation layer") and call a certain "send(msg)" function. The interface will then have all the instructions necessary for the radio module to actually send the message. This way the core only needs to decide when to send what message, regardless of what modules are installed. Providing a strong compatibility with both future and legacy modules.
+
+### Debugging Tools
+
+When working on this much code a good set of debugging tools is a great way to improve your productivity and possibly reduce wasted time.
+
+As a programming and debugging probe I always use the ST-LINK V3 MINIE with the original firmware on it. But there are lots of different options out there depending on budget, needs and platform.
+
+For the software development of the PulsarOS I also decided to get myself a logic analyzer. Since there're so many peripherals to work with and so many different serial lines to operate I knew I was going to loose a lot of time chasing bugs if I didn't get a logic analyzer. For this reason, after a lot of research, I bought the [Saleae Logic 8](https://www.saleae.com/products/logic-8).
+
+<div align="center">
+<p float="left">
+    <img src="./Images/saleae-close.jpg" width="99%">
+</p>
+</div>
+
+After just a bit of work with the Logic 8 I quickly realized how much time I would've wasted if I hadn't gotten it. When I started to test the radio modules I was able to connect to the SPI lines and check exactly what was happening, who was doing what. This informations massivley reduced the time it took me to track what wasn't working so that I could fix it.
+
+The Saleae Logic 8 strength is actually in the software that is distributed with the analyzer. Logic 2 has been a great piece of software to work with. The interface is very easy to learn, there's an infinite number of real-time decoders available and the possibility of integrating custom Python scripts. One of my favourite things about Logic 2 is that it's available on Linux, which is extremely important to me.
+
+If you are interested in learning more about the Saleae logic analyzers and MSO check them out at [Saleae.com](https://www.saleae.com/).
+
+<div align="center">
+<p float="left">
+    <img src="./Images/saleae-far.jpg" width="49%">
+    <img src="./Images/saleae-screenshot.png" width="49%">
+</p>
+</div>
 
 ## Production
 
@@ -226,16 +275,9 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 
 ### Firmware Flashing
 
-</div>
-
-> [!TIP]
-> If you plan to do any work on the software, of any kind, I strongly suggest to get yourself a logic analyzer, otherwise you might have a very bad time figuring what exactly is not working.
-
-<div align="justify">
-
 This part is fairly easy. Once you have soldered everything on the CLU and you have a 3V3 power supply (PSU or external) you can program it with the PulsarOS firmware.
 
-Connect your debuggin probe to the 10 pin IDC connector on the CLU, power up the CLU, grab the latest release of [PulsarOS](https://github.com/grokepeer/PulsarOS) (look for the prebuilt .hex/.axf files in the GitHub release section of the PulsarOS repository). Download the firmware to you programming probe interface (STM32CubeProg if using STLink) and flash. Done.
+Connect your debuggin probe to the 10 pin IDC connector on the CLU, power up the CLU, grab the latest release of [PulsarOS](https://github.com/grokepeer/PulsarOS) (look for the prebuilt .hex/.axf files in the GitHub release section of the PulsarOS repository). Download the firmware to your programming probe interface (STM32CubeProg if using STLink) and flash. Done.
 
 ### 3D Printing
 
