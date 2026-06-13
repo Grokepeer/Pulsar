@@ -59,7 +59,6 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
     - [Radio Modules](#radio-modules)
     - [Router Module](#router-module)
     - [Future Modules](#future-modules)
-    - [Case](#case)
 - [Firmware and Software](#firmware-and-software)
     - [Basic Structure](#basic-structure)
     - [Module Interface](#module-interface)
@@ -69,9 +68,6 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
     - [PCB Sourcing](#pcb-sourcing)
     - [PCB Assembly](#pcb-assembly)
     - [Firmware Flashing](#firmware-flashing)
-    - [3D Printing](#3d-printing)
-- [Operation](#operation)
-    - [To Arrive Soon]()
 
 </div>
 
@@ -182,10 +178,6 @@ The possiblities are endless and my ideas are usually way too ambitious but some
 
 Still, the best part of the Pulsar is that you will be able to design your own hardware and write your own module interface package to integrate in the firmware!
 
-### Case
-
-Well, well, well... it's under development
-
 ## Firmware and Software
 
 The Pulsar hardware operates around one central microcontroller. This microcontroller runs the PulsarOS firmware. To connect to the Pulsar via BLE using a smartphone, the PulsarLoom app can be used. Other implementations of software interfaces (through BLE or serial) are not available yet, but can be purpose built with relative ease by anyone.
@@ -278,13 +270,5 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 This part is fairly easy. Once you have soldered everything on the CLU and you have a 3V3 power supply (PSU or external) you can program it with the PulsarOS firmware.
 
 Connect your debuggin probe to the 10 pin IDC connector on the CLU, power up the CLU, grab the latest release of [PulsarOS](https://github.com/grokepeer/PulsarOS) (look for the prebuilt .hex/.axf files in the GitHub release section of the PulsarOS repository). Download the firmware to your programming probe interface (STM32CubeProg if using STLink) and flash. Done.
-
-### 3D Printing
-
-[...]
-
-## Operation
-
-In the midst of this chapter you will find some suggestions regarding the ways of the firmware.
 
 </div>
