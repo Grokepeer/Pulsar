@@ -1,4 +1,5 @@
-<div align="center">
+<!-- GHPR_START -->
+<div markdown="1" align="center">
 
 # Pulsar
 
@@ -10,6 +11,7 @@
 <img src="./Images/pulsar-logo.png" width="300px">
 
 </div>
+<!-- GHPR_END -->
 
 > [!IMPORTANT]
 > Hi! If you want to receive a notification when the system is ready-to-deploy, consider checking out the Pulsar's website [here](https://sheartail.net) where you'll be able to subcribe to the newsletter (we'll only send out emails for the launch day, no spam).
@@ -23,15 +25,15 @@
 > [!CAUTION]
 > Always check with local authority about RF bands regulations in your area.
 
-<div align="justify">
+<div markdown="1" align="justify">
 
 This document contains an overview of the project, a simple description of its parts and its development process, basic instructions on how to build your own Pulsar and how to use it, along with some renders and pictures.<br>
 I hope you will enjoy the process and you are always welcome to open an issue for feedbacks and questions.
 
 - Want to know more about the project? Take a look at the [synopsis](#synopsis).
-- Curious about the development? Read more [here](#technical-overview)
-- Ready to build your own Pulsar? Jump [here](#production)
-- Already holding onto your very own Pulsar, but unsure of how to use it? [This way](#operation)
+- Curious about the development? Read more [here](#technical-overview).
+- Interested in the software behind the Pulsar? [This way](#firmware-and-software).
+- Ready to build your own Pulsar? Jump [here](#production).
 
 ## Synopsis
 
@@ -74,7 +76,7 @@ The hardware is released under the CERN-OHL-S license (In particular, everything
 > [!IMPORTANT]
 > To keep this guide simple and understandable, in the following chapters I will refer to a particular configuration of the modules and parts, although the user knows that the system is highly customizable and can be changed from start to finish. The configuration that I will refer to is as follows: 3S battery, DCDC with 5.0V@3A, 3.3V@2A and 3.8V@3A (for the LTE modem), a Raspberry Pi 3B SBC or similar WiFi and USB3 capable SBC, a Quectel LTE EM05 modem, a generic UART GNSS 5V module, a single SX1281 2.4 GHz module powered from the 3.3 V and a single SX1262 868 MHz module powered from the 5.0 V.
 
-<div align="justify">
+<div markdown="1" align="justify">
 
 ## Sponsors
 
@@ -202,7 +204,7 @@ When working on this much code a good set of debugging tools is a great way to i
 
 As a programming and debugging probe I always use the ST-LINK V3 MINIE with the original firmware on it. But there are lots of different options out there depending on budget, needs and platform.
 
-For the software development of the PulsarOS I also decided to get myself a logic analyzer. Since there're so many peripherals to work with and so many different serial lines to operate I knew I was going to loose a lot of time chasing bugs if I didn't get a logic analyzer. For this reason, after a lot of research, I bought the [Saleae Logic 8](https://www.saleae.com/products/logic-8).
+For the software development of the PulsarOS I also decided to get myself a logic analyzer. Since there're so many peripherals to work with and so many different serial lines to operate I knew I was going to loose a lot of time chasing bugs if I didn't get a logic analyzer. For this reason, after a lot of research, I bought the [Saleae Logic 8](https://www.saleae.com/).
 
 <div align="center">
 <p float="left">
@@ -232,7 +234,7 @@ Over the course of this chapter I will go into some detail about how to procure 
 > [!Caution]
 > The process of ordering the PCBs, ordering all the components (80+ individual components) and soldering everything together is truly a non-trivial task. I'm going to assume that if you are trying to build the hardware from skratch you know what you are doing, this means you have already ordered PCBs in the past, you know what a stackup is, you know what impedance is, etc.. While trying to build this hardware there is the very real chance of breaking something and possibly hurting yourself.
 
-<div align="justify">
+<div markdown="1" align="justify">
 
 ### Tools
 
@@ -259,7 +261,7 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 > [!IMPORTANT]
 > Remember to set the NGFFUSB board stackup to guarantee 90 ohm impedance matched super-speed USB lines. Starting from the next revisions (rev2.x) the NGFFUSB PCB will be designed to be manufactured with matched impedance at [PCBWay](https://pcbway.com), without the need to do any math on the stackup. If not ordering from PCBWay, the USB SS lines are edge coupled microstrip lines, 0.1554 mm wide and spaced 0.2032 mm apart, so be sure to do you math before ordering.
 
-<div align="justify">
+<div markdown="1" align="justify">
 
 ### PCB Assembly
 
