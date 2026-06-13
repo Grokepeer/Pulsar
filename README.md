@@ -231,7 +231,7 @@ Over the course of this chapter I will go into some detail about how to procure 
 
 </div>
 
-> [!Caution]
+> [!CAUTION]
 > The process of ordering the PCBs, ordering all the components (80+ individual components) and soldering everything together is truly a non-trivial task. I'm going to assume that if you are trying to build the hardware from skratch you know what you are doing, this means you have already ordered PCBs in the past, you know what a stackup is, you know what impedance is, etc.. While trying to build this hardware there is the very real chance of breaking something and possibly hurting yourself.
 
 <div markdown="1" align="justify">
@@ -265,7 +265,13 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 
 ### PCB Assembly
 
-[...]
+In order to assemble the PCBs you will need to order all the components. You'll find all necessary components with reference symbols in the BOM files that will be provided with each gerber.
+
+With all the components and PCBs, you can start soldering everything together.
+
+Depending on your configuration you can avoid populating some of the DCDC rails if you don't need them, but most of the CLU will need to be soldered regardless.
+
+When soldering the connectors make sure to solder the mechanical solder points to the sides of the connectors, they help keep the connector in place when under physical stress and avoid ripping traces.
 
 ### Firmware Flashing
 
