@@ -259,7 +259,7 @@ I strongly suggest, when ordering the PCBs, to also order PCB assembly for two c
 </div>
 
 > [!IMPORTANT]
-> Remember to set the NGFFUSB board stackup to guarantee 90 ohm impedance matched super-speed USB lines. Starting from the next revisions (rev2.x) the NGFFUSB PCB will be designed to be manufactured with matched impedance at [PCBWay](https://pcbway.com), without the need to do any math on the stackup. If not ordering from PCBWay, the USB SS lines are edge coupled microstrip lines, 0.1554 mm wide and spaced 0.2032 mm apart, so be sure to do you math before ordering.
+> Remember to set the NGFFUSB board stackup to guarantee 90 ohm impedance matched super-speed USB lines. Starting from the next revisions (rev2.x) the NGFFUSB PCB will be designed to be manufactured with matched impedance at [PCBWay](https://pcbway.com), without the need to do any math on the stackup. If not ordering from PCBWay, the USB SS lines are edge coupled microstrip lines, 0.1554 mm wide and spaced 0.2032 mm apart, so be sure to do your math before ordering.
 
 <div markdown="1" align="justify">
 
